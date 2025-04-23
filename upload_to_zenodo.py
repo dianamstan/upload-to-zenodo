@@ -5,7 +5,6 @@ import codecs
 
 def upload(metadata, pdf_path, file_to_upload, sandbox: True):
     base_url = "https://sandbox.zenodo.org" if sandbox else "https://zenodo.org"
-    token = "5fJMlvsH6j5DcwqwKPhqPcJAqWYtYa38aHlzoPnHeOZbSmnEnOYgiyKKdHKj" if sandbox else "LX25rz5ubncDOw79C6E8RDPaJarwOzcxvkkJdpYBLskI5ntZGiCGmZC5ui8n"
 
     if not _is_valid_json(metadata):
         return
@@ -89,7 +88,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Usage: upload_to_zenodo.py <token> <directory> <optional: file>."
                                                  " The directory contains .json metadata descriptors and .pdf files.")
-    # parser.add_argument("-t", "--token", type=str, help="zenodo api token")
+    parser.add_argument("-t", "--token", type=str, help="zenodo api token")
     parser.add_argument("-d", "--directory", type=str, help="directory with metadata and pdfs")
     parser.add_argument("-f", "--file", type=str, help="optionally upload just one file")
     parser.add_argument("-s", "--sandbox", type=str, help="optionally test against sandbox")
